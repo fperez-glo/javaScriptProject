@@ -5,7 +5,7 @@ while (!nombre.trim()){
 };
 
 edad = parseInt(prompt('Indique su edad'));
-while (isNaN(edad) ||  edad == '')//(!edad.isInteger() && edad<=0) 
+while (isNaN(edad) ||  edad == '' || edad <=0 || edad > 120)//(!edad.isInteger() && edad<=0) 
 {
     edad = parseInt(prompt('Por favor indique una edad valida.'))
 };
