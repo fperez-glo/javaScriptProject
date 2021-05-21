@@ -1,46 +1,114 @@
+let boolRol = false;
 const salarioBrutoOfrecido = 107000;
 const minImponibleGanancias = 125000;
+const roles = [
+  "Gasista",
+  "Plomero",
+  "Operario",
+  "Jefe de Piso",
+  "Jefe de Planta",
+  "Jefe de Sector",
+];
 
 //Clase empleado
 class empleado {
-    constructor(nombre, salarioBrutoPretendido, salarioNeto, aportaGanancias, rol) {   
-        this.nombre = nombre,
-        this.salarioBrutoPretendido = salarioBrutoPretendido,
-        this.salarioNeto = salarioNeto,
-        this.aportaGanancias = aportaGanancias,
-        this.rol = rol
-    }
-    ajuste_X_Rol() { //TODO:
-        this.ajuste = switch (this.rol){
-                            case "Obrero":
-                                this.salarioNeto - 2000
-                        }
-    }
-};
+  constructor(
+    nombre,
+    rol,
+    salarioBrutoPretendido,
+    salarioNeto,
+    aportaGanancias
+  ) {
+    (this.nombre = nombre),
+      (this.salarioBrutoPretendido = salarioBrutoPretendido),
+      (this.salarioNeto = salarioNeto),
+      (this.aportaGanancias = aportaGanancias),
+      (this.rol = rol);
+  }
+}
 
-//Calcula el salario neto en base a un promedio entre el salario bruto ofrecido y pretendido por el empleado.
+//Calcula el salario neto en base a un netoFinal entre el salario bruto ofrecido y pretendido por el empleado.
 const promediarNeto = (salarioBrutoOfrecido, salarioBrutoPretendido) => {
-    promedio = (salarioBrutoOfrecido + salarioBrutoPretendido) / 2
-    let porcentajes = [11,3,3]
-    for (let i = 0; i < porcentajes.length; i++) {
-        promedio = promedio-((promedio*porcentajes[i])/100);
-    }
-    return promedio
+  netoFinal = (salarioBrutoOfrecido + salarioBrutoPretendido) / 2;
+  let deducciones = [11, 3, 3];
+  for (let i = 0; i < deducciones.length; i++) {
+    netoFinal = netoFinal - (netoFinal * deducciones[i]) / 100;
+  }
+
+  if (roles.includes(rol)) {
+    bono_X_rol(rol);
+  }
+  return netoFinal;
 };
 
 //Devuelve true o false si aporta o no Impuesto a las ganancias en base a un minimo imponible de ganancias ficticio.
-const aportaGanancias = (promedio) => {
-    if (promedio >= minImponibleGanancias) {
-        return true;
-    }
-    return false
+const aportaGanancias = (netoFinal) => {
+  if (netoFinal >= minImponibleGanancias) {
+    return true;
+  }
+  return false;
+};
+
+//Realiza un ajuste de acorde al rol elegido
+const bono_X_rol = (rol) => {
+  switch (rol) {
+    case "Gasista":
+      netoFinal += 3565;
+      break;
+    case "Plomero":
+      netoFinal += 3430;
+      break;
+    case "Operario":
+      netoFinal += 1750;
+      break;
+    case "Jefe de Piso":
+      netoFinal += 7580;
+      break;
+    case "Jefe de Sector":
+      netoFinal += 5690;
+      break;
+    case "Jefe de Planta":
+      netoFinal += 15575;
+      break;
+  }
+};
+
+const validarRol = (rol) => {
+  if (roles.includes(rol)) {
+    return (boolRol = true);
+  } else {
+    return (boolRol = false);
+  }
+};
+
+function sub() {
+  //Codigo
+  //nombre = prompt("Por favor indique su nombre").toUpperCase();
+
+  /*
+  salarioBrutoPretendido = parseInt(
+    prompt("Por favor ingrese su salario bruto pretendido.")
+  );
+  */
+  //rol = prompt("Ingrese el rol a ocupar.");
+  nombre = document.getElementById("nomb").value;
+  salarioBrutoPretendido = document.getElementById("salarioPret").value;
+  rol = document.getSelection("rol");
+
+  const empleado1 = new empleado(
+    nombre,
+    validarRol(rol) ? rol : "N/A",
+    salarioBrutoPretendido,
+    promediarNeto(salarioBrutoOfrecido, salarioBrutoPretendido),
+    aportaGanancias(netoFinal) ? "Si" : "No"
+  );
+
+  console.log(empleado1);
+  if (boolRol) {
+    alert(`Su salario neto se vio afectado por su 
+    especialidad de ${empleado1.rol} con un monto a favor como bonificacion.
+    Su salario neto es ${empleado1.salarioNeto}`);
+  } else {
+    alert(`Su salario neto es ${empleado1.salarioNeto}`);
+  }
 }
-
-
-//Codigo
-nombre = prompt('Por favor indique su nombre');
-salarioBrutoPretendido = parseInt(prompt('Por favor ingrese su salario bruto pretendido.'));
-rol = prompt('Ingrese el rol a ocupar.')
-
-const empleado1 = new empleado(nombre,salarioBrutoPretendido,promediarNeto(salarioBrutoOfrecido,salarioBrutoPretendido),aportaGanancias(promedio) ? "Si" : "No", rol);
-console.log(empleado1);
