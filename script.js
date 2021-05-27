@@ -10,7 +10,7 @@ while (isNaN(edad) ||  edad == '' || edad <=0 || edad > 120)//(!edad.isInteger()
     edad = parseInt(prompt('Por favor indique una edad valida.'))
 };
 
-if (nombre && edad>=18) {
+if (edad>=18) {
     alert(`Su nombre es ${nombre} y es mayor de edad.`)
 } else {
     alert(`Su nombre es ${nombre} y es menor de edad.`)

@@ -25,6 +25,9 @@ class empleado {
       (this.aportaGanancias = aportaGanancias),
       (this.rol = rol);
   }
+  saludar(){
+    alert(`Hola ${this.nombre}`)
+  }
 }
 
 //Calcula el salario neto en base a un netoFinal entre el salario bruto ofrecido y pretendido por el empleado.
@@ -104,6 +107,7 @@ function sub() {
   );
 
   console.log(empleado1);
+  empleado1.saludar();
   if (boolRol) {
     alert(`Su salario neto se vio afectado por su 
     especialidad de ${empleado1.rol} con un monto a favor como bonificacion.
