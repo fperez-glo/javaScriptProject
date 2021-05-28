@@ -5,27 +5,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>proyectoJs</title>
+    <link rel="stylesheet" href="projectoJs.css">
   </head>
   <body>
-    <h2>Empleado</h2>
-    <form name="form" action="" method="get">
-      <label for="nomb">Nombre:</label>
-      <input type="text" name="nomb" id="nomb"/>
-      <br />
-      <label for="salarioPret">Salario Bruto Pretendido:</label>
-      <input type="number" name="salarioPret" id="salarioPret"/>
-      <br />
-      <label for="rol">Rol:</label>
-      <select name="rol" id="rol">
-        <option value="rol1" selected>Operario</option>
-        <option value="rol2">Gasista</option>
-        <option value="rol3">Plomero</option>
-        <option value="rol4">Jefe de Sector</option>
-        <option value="rol5">Jefe de Piso</option>
-        <option value="rol6">Jefe de Planta</option>
-      </select>
-    </form>
-    <button type="submit" onclick="sub()">Enviar</button>
+    <div class="frm">
+      <div class="frmTitle">
+        <h2>Empleado</h2>  
+      </div>
+      <form name="form" action="" method="get">
+        <label for="nomb">Nombre:</label>
+        <input type="text" name="nomb" id="nomb"/>
+        <br />
+        <label for="salarioPret">Salario Bruto Pretendido:</label>
+        <input type="number" name="salarioPret" id="salarioPret"/>
+        <br />
+        <label for="rol">Rol:</label>
+        <select name="rol" id="rol">
+          <option value="rol1" selected>Operario</option>
+          <option value="rol2">Gasista</option>
+          <option value="rol3">Plomero</option>
+          <option value="rol4">Jefe de Sector</option>
+          <option value="rol5">Jefe de Piso</option>
+          <option value="rol6">Jefe de Planta</option>
+        </select>
+      </form>
+      <button type="submit" onclick="sub()">Enviar</button>
+    </div>
   </body>
   <script src="proyectoJs.js"></script>
 </html>

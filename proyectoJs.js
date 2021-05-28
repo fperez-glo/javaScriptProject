@@ -25,8 +25,8 @@ class empleado {
       (this.aportaGanancias = aportaGanancias),
       (this.rol = rol);
   }
-  saludar(){
-    alert(`Hola ${this.nombre}`)
+  saludar() {
+    alert(`Hola ${this.nombre}`);
   }
 }
 
@@ -95,8 +95,14 @@ function sub() {
   */
   //rol = prompt("Ingrese el rol a ocupar.");
   nombre = document.getElementById("nomb").value;
-  salarioBrutoPretendido = document.getElementById("salarioPret").value;
-  rol = document.getSelection("rol");
+  salarioBrutoPretendido = parseInt(document.getElementById("salarioPret").value);
+  
+  rolList = document.getElementById("rol");
+  rol = rolList.options[rolList.selectedIndex].text;
+
+  //console.log("Nombre: ", nombre);
+  //console.log("salarioBrutoPret: ", typeof(salarioBrutoPretendido));
+  //console.log("Rol: ", rol);
 
   const empleado1 = new empleado(
     nombre,
